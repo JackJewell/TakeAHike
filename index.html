@@ -9,48 +9,70 @@
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 </head>
 
-<body>
+<body style = "background-color:limegreen; height: 900px;">
+   <div class = "uk-background-cover" style= "background-image: url(./assets/images/forest-landscape-minimalist-minimalism-y7125.jpg);">
     <div class="container-fluid">
         <header>
-            <div class="row">
+            <div class="row navbar">
                 <div class="col-4">
                     <input type="text" id="searchLocations" class =  "uk-input uk-width-small" placeholder="search">
-                    <button id="btn-submit" class ="uk-button uk-button-default uk-button-small" >Submit</button>
-                    <input type="date" id="date" class =  "uk-input uk-width-small">
+                    <button id="btn-submit" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown;" >Submit</button>
+                    <input type="date" id="date" class =  "uk-input" style = "width: 200px;">
                 </div>
                 <div class="col-4">
-                    <button id="btn-campingTrip" class ="uk-button uk-button-default uk-button-small">Camping Trip</button>
+                    <button id="btn-campingTrip" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown;">Camping Trip</button>
                 </div>
-                <div class="col-4"><button id="btn-hikingTrip" class ="uk-button uk-button-default uk-button-small">Hiking Trip</button></div>
+                <div class="col-4"><button id="btn-hikingTrip" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown;">Hiking Trip</button></div>
             </div>
         </header>
 
         <section>
-            <div class="row">
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
+           
+            <div class="row justify-content-center">
+                <div class="uk-card uk-card-default" style = "width: 1000px; margin: 30px;">
+                    <div class = "uk-card-title">
+                        <h1 id = "parkname" style = "margin-top: 20px; margin-left: 30px;">NAME</h1>
+                    </div> 
+                        <img id = "parkpic"></img>
+                    <div class = "uk-card-body" style = "height: 600px;">   
+                        <h2 id = "address">Address</h2>
+                        <p id = "description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, cum. Nisi, distinctio optio cumque officia sint amet est fuga nulla! Libero, sint temporibus. Voluptate dolorum architecto blanditiis dignissimos ipsam explicabo?</p> 
+                        <p id = "url">jgjahdihasj</p>   
+                    </div> 
+                </div>
             </div>
+        
         </section>
 
         <footer>
-            <div class="row">
+            
+            <nav class = "navbar fixed-bottom justify-content-center" style = "width: 100%;">
+            <div class = "uk-background-cover" style = "background-image: url(./assets/images/oak-wood-header.jpg);">
+            <div class="row justify-content-center">
                 <div class="col-3">
-                    <a href="https://www.facebook.com/">Facebook</a>
+                        <button id="twitter" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown;">
+                                <a href="https://www.facebook.com/" style = "color:sandybrown;">Facebook</a>
+                            </button>      
                 </div>
                 <div class="col-3">
-                    <a href="https://www.twitter.com/">Twitter</a>
+                    <button id="twitter" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown;">
+                        <a href="https://www.twitter.com/" style = "color:sandybrown;">Twitter</a>
+                    </button>
+                </div>
+                <div class="col-3" >
+                    <button id="nps" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown;">
+                        <a href="https://www.nps.gov/index.htm" style = "color:sandybrown;">National Park Services</a>
+                    </button>
                 </div>
                 <div class="col-3">
-                    <a href="https://www.nps.gov/index.htm">National Park Services</a>
-                </div>
-                <div class="col-3">
-                    <button id=""reportBug class ="uk-button uk-button-default uk-button-small" >Contact Support</button>
+                    <button id="reportBug" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown;">Contact Support</button>
                 </div>
             </div>
+        </div>    
+        </nav>
         </footer>
     </div>
+</div>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/js/uikit-icons.min.js"></script>
         <script src="./assets/js/jquery-3.4.1.js" type="text/js"></script>
