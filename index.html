@@ -3,6 +3,9 @@
 <head>
     <title>National Park Finder</title>
     <meta charset="utf-8">
+   <link href="./assets/css/example.css" rel="stylesheet">
+   <link href="./assets/css/font-awesome.min.css" rel="stylesheet">
+   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
         integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/css/uikit.min.css" />
@@ -24,16 +27,18 @@
                 <div class="col-4"><button id="btn-hikingTrip" class ="uk-button uk-button-default uk-button-small">Hiking Trip</button></div>
             </div>
         </header>
+        <div class="container">
+            <div id="slides">
+                
 
-        <section>
-            <div class="row">
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
+            <p>hello world</p>
+            <p>world</p>
+
+                <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+                <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
             </div>
-        </section>
-
+          </div>
+       
         <footer>
             <div class="row">
                 <div class="col-3">
@@ -51,10 +56,24 @@
             </div>
         </footer>
     </div>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="./assets/js/jquery.slides.min.js"></script>
+    <script>
+     $(function() {
+      $('#slides').slidesjs({
+        width: 940,
+        height: 528,
+        navigation: false
+      });
+    });
+    </script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.4/dist/js/uikit-icons.min.js"></script>
         <script src="./assets/js/jquery-3.4.1.js" type="text/js"></script>
+    
         <script src="./assets/js/src.js" type="text/js"></script>
+   
+
 </body>
 
 </html>
