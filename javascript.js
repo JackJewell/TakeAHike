@@ -1,15 +1,12 @@
-var searchItem;
-var queryURL;
+let searchItem;
+let queryURL;
 
-///$("someSubmitButton").onclick(startSearch);
-
-
+$("#btn-submit").on("click",startSearch);
 
 function startSearch(){
-    buildQuery(NPS);
-    callAPI(1);
-    buildQuery(weather);
-    callAPI(2);
+    buildQuery("NPS");
+    //buildQuery("weather");
+    //buildQuery("googMaps");
 }
 
 function callAPI(type){
@@ -20,8 +17,16 @@ function callAPI(type){
         console.log(response);
         switch(type){
             case 1:
+                let nationalPark = response;
+                let parkName = nationalPark.fullName;
+                let parkDesc = nationalPark.description;
+
                 break;
             case 2:
+                let weather = response;
+                break;
+            case 3:
+                let maps = response;
                 break;
             default:
                 break;
@@ -30,33 +35,39 @@ function callAPI(type){
 }
 
 function buildQuery(searchType){
+    let userQuestion = $("#searchLocations").val();
     switch(searchType){
-        case NPS:
+        case "NPS":
             apiKey="api_key=auId6pdJdBjNrQajHOe6lmOqvegjIh77fAeCZ694";
             queryURL = "https://developer.nps.gov/api/v1/parks?";
-            var state = "stateCode="
-            var stateCode;
-            var userQuestion;
+            let state = "stateCode="
+            let stateCode;
 
             if(stateCode !== undefined){
-                var queryURL = queryURL+state+stateCode+"&"+apiKey;
+                queryURL = queryURL+state+stateCode+"&"+apiKey;
+                callAPI(1);
             }else if(userQuestion !== undefined){
-                var queryURL = queryURL+"q="+userQuestion+"&"+apiKey;
+                queryURL = queryURL+"q="+userQuestion+"&"+apiKey;
+                callAPI(1);
             }else{
-                var queryURL = queryURL+"&"+apiKey;
+                queryURL = queryURL+"&"+apiKey;
+                callAPI(1);
             }
-            return queryURL;
 
             break;
-        case weather:
-            //apiKey=;
-            //queryURL =;
-            return queryURL;
+        case "weather":
+            queryURL = "https://api.openweathermap.org/data/2.5/weather?q="
+            +userQuestion
+            +"&APPID=6bd5f328c4eb31862977239b636ff37a";
+
+            callAPI(2);
 
             break;
-        case googMaps:
+        case "googMaps":
             //apiKey=;
             //queryURL =;
+
+            callAPI(3);
             break;
         default:
             break;
