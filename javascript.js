@@ -6,10 +6,8 @@ var queryURL;
 
 
 function startSearch(){
-    buildQuery(NPS);
-    callAPI(1);
-    buildQuery(weather);
-    callAPI(2);
+    buildQuery("NPS");
+    buildQuery("weather");
 }
 
 function callAPI(type){
@@ -20,8 +18,18 @@ function callAPI(type){
         console.log(response);
         switch(type){
             case 1:
+                let nationalPark = response;
+                let parkName = nationalPark.fullName;
+                let parkLoc = nationalPark.directionsURL;
+                let parkDesc = nationalPark.description;
+                let parkURL = nationalPark.url;
+                $("#parkname").text(parkName);
+                $("#address").text(parkLoc);
+                $("#description").text(parkDesc);
+                $("#url").text(parkURL);
                 break;
             case 2:
+                let weather = response;
                 break;
             default:
                 break;
@@ -53,10 +61,6 @@ function buildQuery(searchType){
             //queryURL =;
             return queryURL;
 
-            break;
-        case googMaps:
-            //apiKey=;
-            //queryURL =;
             break;
         default:
             break;
