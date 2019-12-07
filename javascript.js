@@ -56,10 +56,19 @@ function buildQuery(searchType){
             return queryURL;
 
             break;
+<<<<<<< Updated upstream
         case weather:
             //apiKey=;
             //queryURL =;
             return queryURL;
+=======
+        case "weather":
+            queryURL = "https://api.openweathermap.org/data/2.5/weather?q="
+            +userQuestion
+            +"&APPID=6bd5f328c4eb31862977239b636ff37a";
+
+            callAPI(2);
+>>>>>>> Stashed changes
 
             break;
         default:
