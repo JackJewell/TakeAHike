@@ -130,3 +130,24 @@
     top: 50%;
     z-index: 22;
     }
+    .formInput{
+    width:100%;
+    margin-top: -5px;
+    padding: 20px;
+  
+    }
+    .formInputTextArea{
+    height:200px;
+    }
+    .mainBodyForm{
+    background-color: brown;
+    color: white;
+    }
+    .mainBodyForm h2{
+    color: white;
+    }
+    .formButton{
+    background-color: green;
+    color: white;
+    }
+  
