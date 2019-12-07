@@ -81,7 +81,36 @@
                     </button>
                 </div>
                 <div class="col-3">
-                    <button id="reportBug" class ="uk-button uk-button-default uk-button-small " style = "background-color: saddlebrown; color:sandybrown; height: 58px; margin-top: 4px;">Contact Support</button>
+
+                    <button id="reportBug" class ="uk-button uk-button-default uk-button-small uk-margin-remove"uk-toggle="target: #modal-example" style = "background-color: saddlebrown; color:sandybrown; height: 58px;">Contact Support</button>
+                   <!-- This is a button toggling the modal -->
+<!-- This is an anchor toggling the modal -->
+<a href="#modal-example" uk-toggle>Open</a>
+<!-- This is the modal -->
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body mainBodyForm">
+    <h2>Submit Form</h2>
+        <form method="POST" action="mailto:bmogy@outlook.com">
+        <label for="firstName">First Name:</label>
+        <input class="formInput" type="text" placeholder="First Name" id="firstName">
+        
+        <label for="lasName">Last Name:</label>
+        <input class="formInput" type="text" placeholder="Last Name" id="lastName">
+
+        
+        <label for="phoneNumber">Phone Number:</label>
+        <input class="formInput" type="text" placeholder="Phone Number" id="phoneNumber">
+
+        <label for="message">Message</label>
+        <textarea id="message" class="formInput formInputTextArea"placeholder="Please Describe your problem">
+        </textarea>
+            <button class="uk-button uk-button-default uk-modal-close formButton" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary formButton" type="button">Submit</button>
+        </form>
+        </p>
+    </div>
+</div> 
+
                 </div>
             </div>
         </div>    
