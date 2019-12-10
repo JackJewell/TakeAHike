@@ -25,62 +25,82 @@ function callAPI(type){
             case "1":
                 let nationalPark = response.data;
                 let i = 0;
+                let newRowId;
+                let newRow;
                 nationalPark.forEach(function(parkVar){
+
+                    if(i===0){
+                        newRowId = "newRow"+i;
+                        newRow = $("<div></div>");
+                        newRow.attr("class","row justify-content-center slidejs-slide");
+                        newRow.attr("id", newRowId);
+                        newRow.attr("slidejs-index", i);
+                        $(".slidesjs-control").prepend(newRow);
+                    }else{
+                        lastRowId = newRowId;
+                        newRowId = "newRow"+i;
+                        newRow = $("<div></div>");
+                        newRow.attr("class","row justify-content-center slidejs-slide");
+                        newRow.attr("id", newRowId);
+                        newRow.attr("slidejs-index", i);
+                        $("#"+lastRowId).after(newRow);
+                    }
+
                     let newCardId = "newCard"+i;
                     let newCard = $("<div></div>");
                     newCard.attr("class","uk-card uk-card-default");
                     newCard.attr("style", "width: 1000px; margin: 30px;");
                     newCard.attr("id", newCardId);
-                    $("#slideRow").append(newCard);
+                    $("#"+newRowId).append(newCard);
 
                     let newDivId = "newDiv"+i;
                     let newDiv = $("<div></div>");
                     newDiv.attr("class","uk-card-title");
                     newDiv.attr("id", newDivId);
-                    $(newCardId).append(newDiv);
+                    $("#"+newCardId).append(newDiv);
+                    
+                    let newImgId = "newImg"+i;
+                    let newImg = $("<img></img>");
+                    newImg.attr("id", newImgId);
+                    $("#"+newCardId).append(newImg);
 
                     let newBodyId = "newBody"+i;
                     let bodyDiv = $("<div></div>");
                     bodyDiv.attr("class","uk-card-body");
                     bodyDiv.attr("style", "height: 600px;");
                     bodyDiv.attr("id", newBodyId);
-                    $(newCardId).append(bodyDiv);
-
-                    let newImgId = "newImg"+i;
-                    let newImg = $("<img></img>");
-                    newImg.attr("id", newImgId);
-                    $(newCardId).append(newImg);
+                    $("#"+newCardId).append(bodyDiv);
 
                     let newHeaderId = "newHeader"+i;
                     let newHeader = $("<h1></h1>");
                     newHeader.attr("id", newHeaderId);
                     newHeader.attr("style", "margin-top: 20px; margin-left: 30px;");
-                    $(newCardId).append(newHeader);
+                    $("#"+newDivId).append(newHeader);
 
                     let bodyHeaderId = "bodyHeader"+i;
                     let bodyHeader = $("<h2></h2>");
                     bodyHeader.attr("id", bodyHeaderId);
-                    $(newCardId).append(bodyHeader);
+                    $("#"+newBodyId).append(bodyHeader);
 
                     let firstPId = "firstP"+i;
                     let firstP = $("<p></p>");
                     firstP.attr("id", firstPId);
-                    $(newCardId).append(firstP);
+                    $("#"+newBodyId).append(firstP);
 
                     let secondPId = "secondP"+i;
                     let secondP = $("<p></p>");
                     secondP.attr("id", secondPId);
-                    $(newCardId).append(secondP);
+                    $("#"+newBodyId).append(secondP);
 
                     let parkName = parkVar.fullName;
                     let parkLoc = parkVar.directionsUrl;
                     let parkDesc = parkVar.description;
                     let parkURL = parkVar.url;
                     
-                    $(newHeaderId).text(parkName);
-                    $(bodyHeaderId).text(parkLoc);
-                    $(firstPId).text(parkDesc);
-                    $(secondPId).text(parkURL);
+                    $("#"+newHeaderId).text(parkName);
+                    $("#"+bodyHeaderId).text(parkLoc);
+                    $("#"+firstPId).text(parkDesc);
+                    $("#"+secondPId).text(parkURL);
                     i++;
                 })
 
