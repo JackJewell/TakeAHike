@@ -32,17 +32,17 @@ function callAPI(type){
                     if(i===0){
                         newRowId = "newRow"+i;
                         newRow = $("<div></div>");
-                        newRow.attr("class","row justify-content-center slidejs-slide");
+                        newRow.attr("class","row justify-content-center slidesjs-slide");
                         newRow.attr("id", newRowId);
-                        newRow.attr("slidejs-index", i);
+                        newRow.attr("slidesjs-index", i);
                         $(".slidesjs-control").prepend(newRow);
                     }else{
                         lastRowId = newRowId;
                         newRowId = "newRow"+i;
                         newRow = $("<div></div>");
-                        newRow.attr("class","row justify-content-center slidejs-slide");
+                        newRow.attr("class","row justify-content-center slidesjs-slide");
                         newRow.attr("id", newRowId);
-                        newRow.attr("slidejs-index", i);
+                        newRow.attr("slidesjs-index", i);
                         $("#"+lastRowId).after(newRow);
                     }
 
