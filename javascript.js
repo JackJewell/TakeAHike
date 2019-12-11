@@ -29,22 +29,10 @@ function callAPI(type){
                 let newRow;
                 nationalPark.forEach(function(parkVar){
 
-                    if(i===0){
-                        newRowId = "newRow"+i;
-                        newRow = $("<div></div>");
-                        newRow.attr("class","row justify-content-center slidesjs-slide");
-                        newRow.attr("id", newRowId);
-                        newRow.attr("slidesjs-index", i);
-                        $(".slidesjs-control").prepend(newRow);
-                    }else{
-                        lastRowId = newRowId;
-                        newRowId = "newRow"+i;
-                        newRow = $("<div></div>");
-                        newRow.attr("class","row justify-content-center slidesjs-slide");
-                        newRow.attr("id", newRowId);
-                        newRow.attr("slidesjs-index", i);
-                        $("#"+lastRowId).after(newRow);
-                    }
+                    newRowId = "emptySlide"+i;
+                    newRow = $("#"+newRowId);
+                    newRow.attr("class","row justify-content-center slidesjs-slide");
+                    newRow.attr("slidesjs-index", i);
 
                     let newCardId = "newCard"+i;
                     let newCard = $("<div></div>");
@@ -102,8 +90,9 @@ function callAPI(type){
                     $("#"+firstPId).text(parkDesc);
                     $("#"+secondPId).text(parkURL);
                     i++;
+                    
                 })
-
+                slideClearer(i);
                 break;
             case "2":
                 let weather = response;
@@ -143,5 +132,15 @@ function buildQuery(searchType){
             break;
         default:
             break;
+    }
+}
+
+function slideClearer(numberVar){
+    let pageList = $(".slidesjs-pagination");
+    while(numberVar<31){
+    $("#emptySlide"+numberVar).remove();
+    pageList.children[numberVar].empty();
+    pageList.children[numberVar].remove();
+    numberVar++;
     }
 }
