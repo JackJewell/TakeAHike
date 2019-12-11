@@ -86,6 +86,7 @@
       body {
         padding-left: 20px;
         padding-right: 20px;
+        margin: 0px;
       }
       .container {
         width: auto
@@ -151,3 +152,16 @@
     color: white;
     }
   
+    footer{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+
+    }
+
+    #topnav{
+      position: fixed;
+      top: 0;
+      width: 100%;
+
+    }
