@@ -19,15 +19,15 @@
             <nav class="navbar m-0 p-0">
                     <div class = "uk-background-cover uk-margin-remove" style = "background-image: url(./assets/images/oak-wood-header.jpg); width: 100%; height: 65px;">
                  <div class = "row my-0" > 
-                <div class="col-4">
+                <div class="col-6">
                     <input type="text" id="searchLocations" class =  "uk-input uk-width-small" placeholder="search" style = "width: 200px; margin-left: 5px; margin-top: 10px;">
                     <button id="btn-submit" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown; margin-top: 10px;" >Submit</button>
                     <input type="date" id="date" class =  "uk-input" style = "width: 200px; margin-top: 10px;">
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <button id="btn-campingTrip" class = "uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown; margin-top: 15px; margin-left: 190px;">Camping Trip</button>
                 </div>
-                <div class="col-4"><button id="btn-hikingTrip" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown; margin-top: 15px;">Hiking Trip</button></div>
+                <div class="col-3"><button id="btn-hikingTrip" class ="uk-button uk-button-default uk-button-small" style = "background-color: saddlebrown; color:sandybrown; margin-top: 15px;">Hiking Trip</button></div>
             </div> 
             </div>
             </nav>
@@ -36,10 +36,29 @@
             
         <div class="container mainBody">
             <div id="slides">
+
                   <div><p>hello</p></div>
                   <div><p>world</p></div>
                 <section>
                 </section>
+
+                  
+
+                    <div class="row justify-content-center">
+                            <div class="uk-card uk-card-default" style = "width: 1000px; margin: 30px; background-color:rgb(228, 171, 97); border-style: solid; border-width: 10px; border-color:saddlebrown">
+                                <div class = "uk-card-title">
+                                    <h1 id = "parkname" style = "margin-top: 20px; margin-left: 30px;">NAME</h1>
+                                </div> 
+                                    <img id = "parkpic"></img>
+                                <div class = "uk-card-body" style = "height: 600px;">   
+                                    <h2 id = "address">Address</h2>
+                                    <p id = "description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, cum. Nisi, distinctio optio cumque officia sint amet est fuga nulla! Libero, sint temporibus. Voluptate dolorum architecto blanditiis dignissimos ipsam explicabo?</p> 
+                                    <p id = "url">jgjahdihasj</p>   
+                                </div> 
+                            </div>
+                        </div>
+        <section>
+        </section>
 
                 <a href="#" class="slidesjs-previous slidesjs-navigation linkedItem-left"><i class="icon-large">&#8592;</i></a>
                 <a href="#" class="slidesjs-next slidesjs-navigation linkedItem-right"><i class="icon-large">&#8594;</i></a>
@@ -68,7 +87,36 @@
                     </button>
                 </div>
                 <div class="col-3">
-                    <button id="reportBug" class ="uk-button uk-button-default uk-button-small " style = "background-color: saddlebrown; color:sandybrown; height: 58px; margin-top: 4px;">Contact Support</button>
+
+                    <button id="reportBug" class ="uk-button uk-button-default uk-button-small uk-margin-remove"uk-toggle="target: #modal-example" style = "background-color: saddlebrown; color:sandybrown; height: 58px;">Contact Support</button>
+                   <!-- This is a button toggling the modal -->
+<!-- This is an anchor toggling the modal -->
+<a href="#modal-example" uk-toggle>Open</a>
+<!-- This is the modal -->
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body mainBodyForm">
+    <h2>Submit Form</h2>
+        <form method="POST" action="mailto:bmogy@outlook.com">
+        <label for="firstName">First Name:</label>
+        <input class="formInput" type="text" placeholder="First Name" id="firstName">
+        
+        <label for="lasName">Last Name:</label>
+        <input class="formInput" type="text" placeholder="Last Name" id="lastName">
+
+        
+        <label for="phoneNumber">Phone Number:</label>
+        <input class="formInput" type="text" placeholder="Phone Number" id="phoneNumber">
+
+        <label for="message">Message</label>
+        <textarea id="message" class="formInput formInputTextArea"placeholder="Please Describe your problem">
+        </textarea>
+            <button class="uk-button uk-button-default uk-modal-close formButton" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary formButton" type="button">Submit</button>
+        </form>
+        </p>
+    </div>
+</div> 
+
                 </div>
             </div>
         </div>    
