@@ -2,12 +2,13 @@
     body {
       -webkit-font-smoothing: antialiased;
       font: normal 15px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: #232525;
+      color: sandybrown;
       padding-top:70px;
     }
 
     #slides {
-      display: none
+      display: none;
+      margin-top: 150px;
     }
 
     #slides .slidesjs-navigation {
@@ -57,7 +58,7 @@
 
     #slides a:link,
     #slides a:visited {
-      color: #333
+      color: sandybrown;
     }
 
     #slides a:hover,
@@ -91,6 +92,8 @@
       .container {
         width: auto
       }
+
+
     }
 
     /* For smartphones */
@@ -98,6 +101,10 @@
       .container {
         width: auto
       }
+
+
+
+
     }
 
     /* For smaller displays like laptops */

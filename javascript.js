@@ -38,13 +38,14 @@ function callAPI(type){
                     let newCardId = "newCard"+i;
                     let newCard = $("<div></div>");
                     newCard.attr("class","uk-card uk-card-default");
-                    newCard.attr("style", "width: 1000px; margin: 30px;");
+                    newCard.attr("style", " width: 1000px; margin: 30px; background-color: saddlebrown;");
                     newCard.attr("id", newCardId);
                     $("#"+newRowId).append(newCard);
 
                     let newDivId = "newDiv"+i;
                     let newDiv = $("<div></div>");
                     newDiv.attr("class","uk-card-title");
+                    newDiv.attr("style", "background-color: saddlebrown;")
                     newDiv.attr("id", newDivId);
                     $("#"+newCardId).append(newDiv);
                     
@@ -56,19 +57,20 @@ function callAPI(type){
                     let newBodyId = "newBody"+i;
                     let bodyDiv = $("<div></div>");
                     bodyDiv.attr("class","uk-card-body");
-                    bodyDiv.attr("style", "height: 600px;");
+                    bodyDiv.attr("style", "height: 600px; background-color: saddlebrown; ");
                     bodyDiv.attr("id", newBodyId);
                     $("#"+newCardId).append(bodyDiv);
 
                     let newHeaderId = "newHeader"+i;
                     let newHeader = $("<h1></h1>");
                     newHeader.attr("id", newHeaderId);
-                    newHeader.attr("style", "margin-top: 20px; margin-left: 30px;");
+                    newHeader.attr("style", "margin-top: 20px; margin-left: 30px; color: sandybrown;");
                     $("#"+newDivId).append(newHeader);
 
                     let bodyHeaderId = "bodyHeader"+i;
                     let bodyHeader = $("<h2></h2>");
                     bodyHeader.attr("id", bodyHeaderId);
+                    bodyHeader.attr("style", "color: sandybrown;");
                     $("#"+newBodyId).append(bodyHeader);
 
                     let bodyLinkId = "bodyLink"+i;
@@ -81,11 +83,13 @@ function callAPI(type){
 
                     let secondBodyHeader = $("<h3></h3>");
                     secondBodyHeader.text("Park Description:")
+                    secondBodyHeader.attr("style", "color: sandybrown;")
                     $("#"+newBodyId).append(secondBodyHeader);
 
                     let firstPId = "firstP"+i;
                     let firstP = $("<p></p>");
                     firstP.attr("id", firstPId);
+                    firstP.attr("style", "color: sandybrown;")
                     $("#"+newBodyId).append(firstP);
 
                     let secondLinkId = "secondLink"+i;
@@ -98,12 +102,14 @@ function callAPI(type){
 
                     let thirdBodyHeader = $("<h3></h3>");
                     thirdBodyHeader.text("Park Weather:")
+                    thirdBodyHeader.attr("style", "color: sandybrown;")
                     $("#"+newBodyId).append(thirdBodyHeader);
 
 
                     let weatherDivId = "weatherDiv"+i;
                     let weatherDiv = $("<div></div>");
                     weatherDiv.attr("id", weatherDivId);
+                    weatherDiv.attr("style", "color: sandybrown;")
                     $("#"+newBodyId).append(weatherDiv);
 
                     let parkName = parkVar.fullName;
@@ -146,8 +152,10 @@ function callAPI(type){
                 let conditions = weather.list['2'].weather['0'].icon;
                 let temperatureHTML = $("<p></p>").text(temperature);
                 temperatureHTML.attr("class","float-left justify-content-center m-2");
+                temperatureHTML.attr("style", "color: sandybrown;")
                 let humidHTML = $("<p></p>").text(humid);
                 humidHTML.attr("class","float-left justify-content-center m-2");
+                humidHTML.attr("style", "color: sandybrown;")
                 let conditionsHTML = $("<img>").attr("src","http://openweathermap.org/img/w/" + conditions + ".png");
                 conditionsHTML.attr("class","float-left justify-content-center m-2");
 
