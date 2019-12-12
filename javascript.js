@@ -1,5 +1,6 @@
 var searchItem;
 var queryURL;
+let w;
 
 $("#btn-submit").on("click",startSearch);
 
@@ -10,7 +11,6 @@ function startSearch(){
     searchItem = $("#searchLocations").val();
     console.log(searchItem);
     buildQuery("NPS");
-    buildQuery("weather");
 }
 
 function callAPI(type){
@@ -25,6 +25,7 @@ function callAPI(type){
             case "1":
                 let nationalPark = response.data;
                 let i = 0;
+                w = 0;
                 let newRowId;
                 let newRow;
                 nationalPark.forEach(function(parkVar){
@@ -70,25 +71,61 @@ function callAPI(type){
                     bodyHeader.attr("id", bodyHeaderId);
                     $("#"+newBodyId).append(bodyHeader);
 
+                    let bodyLinkId = "bodyLink"+i;
+                    let bodyLink = $("<a></a>");
+                    bodyLink.attr("id", bodyLinkId);
+                    $("#"+bodyHeaderId).append(bodyLink);
+                    
+                    let horizontalLine = $("<hr>");
+                    $("#"+newBodyId).append(horizontalLine);
+
+                    let secondBodyHeader = $("<h3></h3>");
+                    secondBodyHeader.text("Park Description:")
+                    $("#"+newBodyId).append(secondBodyHeader);
+
                     let firstPId = "firstP"+i;
                     let firstP = $("<p></p>");
                     firstP.attr("id", firstPId);
                     $("#"+newBodyId).append(firstP);
 
-                    let secondPId = "secondP"+i;
-                    let secondP = $("<p></p>");
-                    secondP.attr("id", secondPId);
-                    $("#"+newBodyId).append(secondP);
+                    let secondLinkId = "secondLink"+i;
+                    let secondLink = $("<a></a>");
+                    secondLink.attr("id", secondLinkId);
+                    $("#"+newBodyId).append(secondLink);
+
+                    let secondHorizontalLine = $("<hr>");
+                    $("#"+newBodyId).append(secondHorizontalLine);
+
+                    let thirdBodyHeader = $("<h3></h3>");
+                    thirdBodyHeader.text("Park Weather:")
+                    $("#"+newBodyId).append(thirdBodyHeader);
+
+
+                    let weatherDivId = "weatherDiv"+i;
+                    let weatherDiv = $("<div></div>");
+                    weatherDiv.attr("id", weatherDivId);
+                    $("#"+newBodyId).append(weatherDiv);
 
                     let parkName = parkVar.fullName;
                     let parkLoc = parkVar.directionsUrl;
                     let parkDesc = parkVar.description;
                     let parkURL = parkVar.url;
+                    let latEnd = parkVar.latLong.search(",")
+                    let lati = parkVar.latLong.substr(4,latEnd-4);
+                    let longStart = parkVar.latLong.search("g:");
+                    let longi = parkVar.latLong.substr(longStart+2);
+
+                    console.log(lati);
+                    
+                    console.log(longi);
                     
                     $("#"+newHeaderId).text(parkName);
-                    $("#"+bodyHeaderId).text(parkLoc);
+                    $("#"+bodyLinkId).text("Directions to Park");
+                    $("#"+bodyLinkId).attr("href", parkLoc);
                     $("#"+firstPId).text(parkDesc);
-                    $("#"+secondPId).text(parkURL);
+                    $("#"+secondLinkId).text("Park Website");
+                    $("#"+secondLinkId).attr("href", parkURL);
+                    buildQuery("weather",lati,longi);
                     i++;
                     
                 })
@@ -96,6 +133,29 @@ function callAPI(type){
                 break;
             case "2":
                 let weather = response;
+                let weatherHTML = "#weatherDiv"+w;
+
+                let temperature = weather.list['2'].main.temp;
+                temperature = ((temperature * (9/5)) - 459.67);
+                temperature = temperature.toString();
+                temperature = temperature.substring(0,5);
+                temperature = "Temperature: " + temperature + " F";
+
+                let humid = "Humidity: " + weather.list['2'].main.humidity + "%";
+
+                let conditions = weather.list['2'].weather['0'].icon;
+                let temperatureHTML = $("<p></p>").text(temperature);
+                temperatureHTML.attr("class","float-left justify-content-center m-2");
+                let humidHTML = $("<p></p>").text(humid);
+                humidHTML.attr("class","float-left justify-content-center m-2");
+                let conditionsHTML = $("<img>").attr("src","http://openweathermap.org/img/w/" + conditions + ".png");
+                conditionsHTML.attr("class","float-left justify-content-center m-2");
+
+                $(weatherHTML).append(conditionsHTML);
+                $(weatherHTML).append(temperatureHTML);
+                $(weatherHTML).append(humidHTML);
+
+                w++;
                 break;
             default:
                 break;
@@ -103,7 +163,7 @@ function callAPI(type){
     });
 }
 
-function buildQuery(searchType){
+function buildQuery(searchType,lat,lon){
     switch(searchType){
         case "NPS":
             apiKey="api_key=auId6pdJdBjNrQajHOe6lmOqvegjIh77fAeCZ694";
@@ -123,8 +183,10 @@ function buildQuery(searchType){
 
             break;
         case "weather":
-            queryURL = "https://api.openweathermap.org/data/2.5/weather?q="
-            +searchItem
+            queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat="
+            +lat
+            +"&lon="
+            +lon
             +"&APPID=6bd5f328c4eb31862977239b636ff37a";
 
             callAPI("2");
@@ -139,8 +201,8 @@ function slideClearer(numberVar){
     let pageList = $(".slidesjs-pagination");
     while(numberVar<31){
     $("#emptySlide"+numberVar).remove();
-    pageList.children[numberVar].empty();
-    pageList.children[numberVar].remove();
+    //pageList.children[numberVar].empty();
+    //pageList.children[numberVar].remove();
     numberVar++;
     }
 }
