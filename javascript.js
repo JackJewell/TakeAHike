@@ -2,10 +2,11 @@ var searchItem;
 var queryURL;
 let w;
 
+//when the user clicks the search button it activates the first function
 $("#btn-submit").on("click",startSearch);
 
 
-
+//this function starts the API calls and logs the item that is being searched for
 function startSearch(){
     event.preventDefault();
     searchItem = $("#searchLocations").val();
@@ -13,6 +14,7 @@ function startSearch(){
     buildQuery("NPS");
 }
 
+//this function iniatiates API calls and then processes the response
 function callAPI(type){
     console.log(type);
     console.log(queryURL);
@@ -23,13 +25,16 @@ function callAPI(type){
         console.log(response);
         switch(type){
             case "1":
+                //this cas tells the function that the response is from the National Parks API
                 let nationalPark = response.data;
                 let i = 0;
                 w = 0;
                 let newRowId;
                 let newRow;
+                //this loop fills each slide with information about a different park
                 nationalPark.forEach(function(parkVar){
 
+                    //This section creates each individual element needed for the slides
                     newRowId = "emptySlide"+i;
                     newRow = $("#"+newRowId);
                     newRow.attr("class","row justify-content-center slidesjs-slide");
@@ -106,19 +111,19 @@ function callAPI(type){
                     weatherDiv.attr("id", weatherDivId);
                     $("#"+newBodyId).append(weatherDiv);
 
+                    //this section pulls out all of the information for the slides
                     let parkName = parkVar.fullName;
                     let parkLoc = parkVar.directionsUrl;
                     let parkDesc = parkVar.description;
                     let parkURL = parkVar.url;
+
+                    //this section pulls the latitude and longitude from the park response, this is necessary for the weather call
                     let latEnd = parkVar.latLong.search(",")
                     let lati = parkVar.latLong.substr(4,latEnd-4);
                     let longStart = parkVar.latLong.search("g:");
                     let longi = parkVar.latLong.substr(longStart+2);
-
-                    console.log(lati);
                     
-                    console.log(longi);
-                    
+                    //this section fills in all of the information in the slides themselves
                     $("#"+newHeaderId).text(parkName);
                     $("#"+bodyLinkId).text("Directions to Park");
                     $("#"+bodyLinkId).attr("href", parkLoc);
@@ -132,9 +137,11 @@ function callAPI(type){
                 slideClearer(i);
                 break;
             case "2":
+                //this case tells the function that the response is from the Openweather API
                 let weather = response;
                 let weatherHTML = "#weatherDiv"+w;
 
+                //this section pulls information out from the response and then processes it into a usable form
                 let temperature = weather.list['2'].main.temp;
                 temperature = ((temperature * (9/5)) - 459.67);
                 temperature = temperature.toString();
@@ -150,7 +157,8 @@ function callAPI(type){
                 humidHTML.attr("class","float-left justify-content-center m-2");
                 let conditionsHTML = $("<img>").attr("src","http://openweathermap.org/img/w/" + conditions + ".png");
                 conditionsHTML.attr("class","float-left justify-content-center m-2");
-
+                
+                //this section adds the information into the slides
                 $(weatherHTML).append(conditionsHTML);
                 $(weatherHTML).append(temperatureHTML);
                 $(weatherHTML).append(humidHTML);
@@ -163,9 +171,11 @@ function callAPI(type){
     });
 }
 
+//this function builds Jquery URLs and activates the API calls
 function buildQuery(searchType,lat,lon){
     switch(searchType){
         case "NPS":
+            //this case tells the function to build a URL for the National Parks API
             apiKey="api_key=auId6pdJdBjNrQajHOe6lmOqvegjIh77fAeCZ694";
             queryURL = "https://developer.nps.gov/api/v1/parks?";
             var state = "stateCode="
@@ -183,6 +193,7 @@ function buildQuery(searchType,lat,lon){
 
             break;
         case "weather":
+            //this case tells the function to build a URL for the OpenWeather API
             queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat="
             +lat
             +"&lon="
@@ -197,6 +208,7 @@ function buildQuery(searchType,lat,lon){
     }
 }
 
+//this function clears empty slides in order to reduce the length of the slide show
 function slideClearer(numberVar){
     let pageList = $(".slidesjs-pagination");
     while(numberVar<31){
